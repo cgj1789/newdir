@@ -2,4 +2,40 @@
 <div><span>id: {{hero.id}}</span></div>
 <div><span>name: {{hero.name}}</span></div>
 
-<button [disabled]="isSpecial">attribute binding</button>
+<div>
+  <button [disabled]="isSpecial">property binding button</button>
+</div>
+
+<div>
+  <div [class.special]="isSpecial">class binding button</div>
+</div>
+
+<!--<div>
+  <button [style.color]="isSpecial ? 'red' : 'green'">style binding button</button>
+</div>-->
+
+<div>
+  <button [style.color]="isSpecial ? 'blue' : 'red'">style binding button</button>
+</div>
+
+<div>
+  <button (click)="onSave($event)">event binding save button</button>
+</div>
+
+<h2>My Heroes</h2>
+<ul>
+  <li class="d-flex m-1" [class.selected]="hero === selectedHero"
+      *ngFor="let hero of heroes" (click)="selectedHero = hero">
+    <span class="rounded-left p-2 bg-primary text-light">{{hero.id}}:</span>
+    <div class="rounded-right p-2 bg-light text-dark w-50">{{hero.name}}</div>
+  </li>
+</ul>
+
+<!--detail view-->
+<div *ngIf="selectedHero != undefined">
+  <h2>{{ selectedHero.name | uppercase }} Details</h2>
+  <p>id: {{selectedHero.id}}</p>
+  <label>
+    <input [(ngModel)]="selectedHero.name" placeholder="name">
+  </label>
+</div>
