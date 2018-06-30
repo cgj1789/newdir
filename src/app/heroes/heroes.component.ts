@@ -13,6 +13,8 @@ export class HeroesComponent implements OnInit {
     name: 'Winstorm'
   };
 
+  isSpecial = true;
+
   constructor() { }
 
   ngOnInit() {
