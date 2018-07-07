@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Hero} from '../hero';
 import {HEROES} from '../mock-heroes';
+import {HeroService} from '../hero.service';
 
 @Component({
   selector: 'app-heroes',
@@ -16,13 +17,14 @@ export class HeroesComponent implements OnInit {
 
   isSpecial = false;
 
-  heroes = HEROES;
+  heroes: Hero[];
 
   selectedHero: Hero; // 디테일 뷰를 렌더링 하기 위한 모델 정보
 
-  constructor() { }
+  constructor(private heroService: HeroService) { }
 
   ngOnInit() {
+    this.heroes = this.heroService.getHeroes();
   }
 
   onSave(event: any) {
