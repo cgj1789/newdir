@@ -32,10 +32,5 @@
 </ul>
 
 <!--detail view-->
-<div *ngIf="selectedHero != undefined">
-  <h2>{{ selectedHero.name | uppercase }} Details</h2>
-  <p>id: {{selectedHero.id}}</p>
-  <label>
-    <input [(ngModel)]="selectedHero.name" placeholder="name">
-  </label>
-</div>
+
+<app-hero-detail [selectedHero]="selectedHero"></app-hero-detail>
