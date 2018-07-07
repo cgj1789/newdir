@@ -15,7 +15,8 @@ const routes: Routes = [
   // 경로, 로딩할 컴포넌트
   {path: '', component: HomeComponent},
   {path: 'heroes', component: HeroesComponent},
-  {path: 'todo', component: TodoComponent}
+  {path: 'todo', component: TodoComponent},
+  {path: 'detail/:hero_id', component: HeroDetailComponent}
 ];
 
 @NgModule({

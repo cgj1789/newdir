@@ -25,7 +25,8 @@
 <h2>My Heroes</h2>
 <ul>
   <li class="d-flex m-1" [class.selected]="hero === selectedHero"
-      *ngFor="let hero of heroes" (click)="selectedHero = hero">
+      *ngFor="let hero of heroes" (click)="selectedHero = hero"
+      routerLink="/detail/{{hero.id}}">
     <span class="rounded-left p-2 bg-primary text-light">{{hero.id}}:</span>
     <div class="rounded-right p-2 bg-light text-dark w-50">{{hero.name}}</div>
   </li>
