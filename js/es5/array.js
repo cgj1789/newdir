@@ -16,7 +16,7 @@ var books = [
 ];
 
 // 2. books의 type은 무엇인가? 자바스크립트의 타입은 몇가지가 있는가?
-
+console.log(typeof(books));
 
 
 //3. 맨 앞쪽에 이것이자바다, 40000, 김상형, 5를 추가하시오 (힌트: unshift)
