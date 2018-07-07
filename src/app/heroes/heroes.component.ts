@@ -10,10 +10,10 @@ import {HeroService} from '../hero.service';
 })
 export class HeroesComponent implements OnInit {
 
-  hero: Hero = {
-    id: 1,
+  /*hero: Hero = {
+    hero_id: 1,
     name: 'Winstorm'
-  };
+  };*/
 
   isSpecial = false;
 

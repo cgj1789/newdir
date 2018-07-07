@@ -1,5 +1,5 @@
 <h3>hero name: {{hero.name}}</h3>
-<div><span>id: {{hero.id}}</span></div>
+<div><span>id: {{hero.hero_id}}</span></div>
 <div><span>name: {{hero.name}}</span></div>
 
 <div>
@@ -28,8 +28,8 @@
 <ul>
   <li class="d-flex m-1" [class.selected]="hero === selectedHero"
       *ngFor="let hero of heroes" (click)="selectedHero = hero"
-      routerLink="/heroes/{{hero.id}}">
-    <span class="rounded-left p-2 bg-primary text-light">{{hero.id}}:</span>
+      routerLink="/heroes/{{hero.hero_id}}">
+    <span class="rounded-left p-2 bg-primary text-light">{{hero.hero_id}}:</span>
     <div class="rounded-right p-2 bg-light text-dark w-50">{{hero.name}}</div>
   </li>
 </ul>

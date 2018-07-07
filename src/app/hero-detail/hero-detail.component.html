@@ -3,7 +3,7 @@
 </p>
 <div *ngIf="selectedHero != undefined">
   <h2>{{ selectedHero.name | uppercase }} Details</h2>
-  <p>id: {{selectedHero.id}}</p>
+  <p>id: {{selectedHero.hero_id}}</p>
   <label>
     <input [(ngModel)]="selectedHero.name" placeholder="name">
   </label>
