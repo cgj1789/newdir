@@ -42,7 +42,8 @@ console.log(books);
 
 
 // 10. 책의 총 비용을 출력하시오
-
+var sum = books.forEach(item => sum += item.price);
+console.log(sum);
 
 
 // 11. 제목앞에 판매순위를 등수를 붙인("콩쥐팥쥐" => "1등 콩쥐팥쥐") 새로운 배열을 생성 하시오.(힌트: map)
