@@ -13,7 +13,9 @@ import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [
   // 경로, 로딩할 컴포넌트
-  {path: 'heroes', component: HeroesComponent}
+  {path: '', component: HomeComponent},
+  {path: 'heroes', component: HeroesComponent},
+  {path: 'todo', component: TodoComponent}
 ];
 
 @NgModule({
