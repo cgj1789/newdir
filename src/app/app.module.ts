@@ -7,6 +7,14 @@ import {FormsModule} from '@angular/forms';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { VotetakerComponent } from './votetaker/votetaker.component';
 import { VoterComponent } from './voter/voter.component';
+import { HomeComponent } from './home/home.component';
+import { TodoComponent } from './todo/todo.component';
+import {RouterModule, Routes} from '@angular/router';
+
+const routes: Routes = [
+  // 경로, 로딩할 컴포넌트
+  {path: 'heroes', component: HeroesComponent}
+];
 
 @NgModule({
   declarations: [
@@ -14,11 +22,14 @@ import { VoterComponent } from './voter/voter.component';
     HeroesComponent,
     HeroDetailComponent,
     VotetakerComponent,
-    VoterComponent
+    VoterComponent,
+    HomeComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
