@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import {HEROES} from './mock-heroes';
-import {Observable, of} from 'rxjs';
+import {Observable, of, Subject} from 'rxjs';
 import {Hero} from './hero';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeroService {
+  refresh = new Subject<number>(); // publisher: next() 함수로 데이터 발생
+  refresh$ = this.refresh.asObservable(); // subscriber: subscribe()로 데이터 수신
 
   constructor() { }
 

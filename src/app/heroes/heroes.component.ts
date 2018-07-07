@@ -21,7 +21,10 @@ export class HeroesComponent implements OnInit {
 
   selectedHero: Hero; // 디테일 뷰를 렌더링 하기 위한 모델 정보
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService) {
+    // subscriber 역할
+    this.heroService.refresh$.subscribe(data => console.log(data));
+  }
 
   ngOnInit() {
     this.heroService.getHeroes()
