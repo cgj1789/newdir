@@ -52,4 +52,20 @@ export class JqueryComponent implements OnInit {
     });
   }
 
+  add_todo() {
+    $.ajax({
+      url: 'http://www.javabrain.kr:8080/api/todo',
+      method: 'POST',
+      data: JSON.stringify({todo: $('#input_todo').val(), isFinished: false}), // 보낼 때 json으로 보냄
+      contentType: 'application/json', // 보낼 때 이 타입으로 보냄
+      dataType: 'json', // 받을 때 json으로 받음
+      success: data => {
+        // 모델 데이터 생성
+        this.todoList.unshift(data);
+
+        // dom 생성
+        this.refresh();
+      }
+    });
+  }
 }
