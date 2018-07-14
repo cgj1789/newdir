@@ -3,6 +3,7 @@ import {Observable, of, Subject} from 'rxjs';
 import {Hero} from './hero';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../environments/environment';
+import {TodoVo} from './domain/todo.vo';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,9 @@ export class HeroService {
       // return HEROES.find(hero => hero.hero_id === hero_id ? true : false);
     // es6의 템플릿 스트링 문법: 빽틱 사이에 ${} ex : `xxxx ${자바스크립트 변수}`
     return this.http.get<Hero>(`${environment.HOST}/api/hero/${hero_id}`);
+  }
+
+  getTodoList(): Observable<TodoVo[]> {
+    return this.http.get<TodoVo[]>(`${environment.HOST}/api/todo`);
   }
 }
