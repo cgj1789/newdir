@@ -34,4 +34,12 @@ export class TodoComponent implements OnInit {
         this.todoList.unshift(body);
       });
   }
+
+  save(todo: TodoVo) {
+    todo.isEdited = true;
+  }
+
+  restore(todo: TodoVo) {
+    todo.isEdited = false;
+  }
 }
