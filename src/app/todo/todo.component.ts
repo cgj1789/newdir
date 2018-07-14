@@ -40,14 +40,29 @@ export class TodoComponent implements OnInit {
   save(todo: TodoVo) {
     todo.isEdited = true;
     // 원본 데이터 저장
-    // Object.assign({}, todo); // es5
-    const tempTodo = {...todo}; // es6
+    // Object.assign({}, todo); // es5 방식
+    const tempTodo = {...todo}; // es6 방식
     this.tempTodoList.set(todo.todo_id, tempTodo);
   }
 
   restore(todo: TodoVo) {
     const tempTodo = this.tempTodoList.get(todo.todo_id);
     Object.assign(todo, tempTodo);
+    // const a = {...todo, ...tempTodo}; es6 방식
     todo.isEdited = false;
+  }
+
+  modifyTodo(todo: TodoVo) {
+    this.heroService.modifyTodo(todo)
+      .subscribe(body => {
+        console.log(body);
+        // 수정된 데이터를 모델에 반영
+        Object.assign(todo, body);
+        // 1) findIndex로 인덱스를 찾은 후 splice(index, 1); 삭제 로직
+        /*const index = this.todoList.findIndex(item => item.todo_id === todo.todo_id ? true : false);
+        this.todoList.splice(index, 1);*/
+        // 일반템플릿으로 전환
+        todo.isEdited = false;
+      });
   }
 }
