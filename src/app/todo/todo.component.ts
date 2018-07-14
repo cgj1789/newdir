@@ -58,11 +58,24 @@ export class TodoComponent implements OnInit {
         console.log(body);
         // 수정된 데이터를 모델에 반영
         Object.assign(todo, body);
-        // 1) findIndex로 인덱스를 찾은 후 splice(index, 1); 삭제 로직
-        /*const index = this.todoList.findIndex(item => item.todo_id === todo.todo_id ? true : false);
-        this.todoList.splice(index, 1);*/
         // 일반템플릿으로 전환
         todo.isEdited = false;
       });
+  }
+
+  removeTodo(todo: TodoVo) {
+    const result = confirm('삭제하시겠습니까?');
+    if (result) {
+      this.heroService.removeTodo(todo.todo_id)
+        .subscribe(body => {
+          console.log(body);
+          if (body.result === 0) {
+            // 성공
+            // 1) findIndex로 인덱스를 찾은 후 splice(index, 1); 삭제 로직
+            const index = this.todoList.findIndex(item => item.todo_id === todo.todo_id ? true : false);
+            this.todoList.splice(index, 1);
+          }
+        });
+    }
   }
 }
