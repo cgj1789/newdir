@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {HEROES} from './mock-heroes';
 import {Observable, of, Subject} from 'rxjs';
 import {Hero} from './hero';
 import {HttpClient} from '@angular/common/http';
@@ -20,8 +19,12 @@ export class HeroService {
     // return of(HEROES);
   }
 
-  // hero_id를 받아서 hero를 return
-  getHero(hero_id: number): Hero {
+  /**
+   * hero_id를 받아서 hero를 리턴
+   * @param {number} hero_id
+   * @returns {Observable<Hero>}
+   */
+  getHero(hero_id: number): Observable<Hero> {
     /*const h = HEROES.find((hero, index, array) => {
       // logic here
       if (hero.hero_id === hero_id) {
@@ -31,6 +34,8 @@ export class HeroService {
       }
     });
     return h;*/
-    return HEROES.find(hero => hero.hero_id === hero_id ? true : false);
+      // return HEROES.find(hero => hero.hero_id === hero_id ? true : false);
+    // es6의 템플릿 스트링 문법: 빽틱 사이에 ${} ex : `xxxx ${자바스크립트 변수}`
+    return this.http.get<Hero>(`${environment.HOST}/api/hero/${hero_id}`);
   }
 }

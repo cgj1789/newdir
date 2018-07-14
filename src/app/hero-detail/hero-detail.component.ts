@@ -24,7 +24,11 @@ export class HeroDetailComponent implements OnInit {
       console.log(data);
       // + 기호는 문자열을 숫자로 변환시킨다.
       const param = +data['hero_id'];
-      this.selectedHero = this.heroService.getHero(param);
+      this.heroService.getHero(param)
+        .subscribe((body: Hero) => {
+          this.selectedHero = body;
+          console.log(this.selectedHero);
+        });
       // 변경된 데이터를 부모에게 전달
       this.heroService.refresh.next(param);
     });
