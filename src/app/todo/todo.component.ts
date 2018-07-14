@@ -11,6 +11,8 @@ export class TodoComponent implements OnInit {
   todoList: TodoVo[];
   // 신규 할일 (new로 객체를 선언하지 않으면 undefined이 된다)
   newTodo = new TodoVo();
+  // 취소시 복원하기 위한 원본 데이터 저장소
+  tempTodoList = new Map<number, TodoVo>();
 
   constructor(private heroService: HeroService) { }
 
@@ -37,9 +39,15 @@ export class TodoComponent implements OnInit {
 
   save(todo: TodoVo) {
     todo.isEdited = true;
+    // 원본 데이터 저장
+    // Object.assign({}, todo); // es5
+    const tempTodo = {...todo}; // es6
+    this.tempTodoList.set(todo.todo_id, tempTodo);
   }
 
   restore(todo: TodoVo) {
+    const tempTodo = this.tempTodoList.get(todo.todo_id);
+    Object.assign(todo, tempTodo);
     todo.isEdited = false;
   }
 }
