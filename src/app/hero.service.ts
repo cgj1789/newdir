@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, of, Subject} from 'rxjs';
 import {Hero} from './hero';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../environments/environment';
 import {TodoVo} from './domain/todo.vo';
 
@@ -42,5 +42,11 @@ export class HeroService {
 
   getTodoList(): Observable<TodoVo[]> {
     return this.http.get<TodoVo[]>(`${environment.HOST}/api/todo`);
+  }
+
+  addTodo(todo: TodoVo): Observable<TodoVo> {
+    const headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post<TodoVo>(`${environment.HOST}/api/todo`, todo, {headers: headers});
   }
 }
