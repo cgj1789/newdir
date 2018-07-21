@@ -23,7 +23,8 @@ const routes: Routes = [
       {path: ':hero_id', component: HeroDetailComponent}
     ]},
   {path: 'jquery', component: JqueryComponent},
-  {path: 'todo', component: TodoComponent}
+  {path: 'todo', component: TodoComponent},
+  {path: 'admin', loadChildren: './admin/admin.module#AdminModule'}
 ];
 
 @NgModule({
