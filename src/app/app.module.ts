@@ -13,6 +13,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { JqueryComponent } from './jquery/jquery.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MydatePipe } from './mydate.pipe';
 
 const routes: Routes = [
   // 경로, 로딩할 컴포넌트
@@ -33,6 +34,7 @@ const routes: Routes = [
     VoterComponent,
     HomeComponent,
     JqueryComponent,
+    MydatePipe,
     TodoComponent
   ],
   imports: [
