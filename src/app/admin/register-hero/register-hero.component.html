@@ -58,7 +58,15 @@
   </div>
 </div>
 
-<div class="m-3 d-flex justify-content-center">
+  <div class="d-flex flex-column mt-3">
+    <div>사진등록</div>
+    <div>
+      <input type="file" (change)="fileUpload($event)">
+    </div>
+    <img [src]="form.controls['photo'].value" *ngIf="form.controls['photo'].value">
+  </div>
+
+  <div class="m-3 d-flex justify-content-center">
   <button type="submit" class="btn btn-outline-primary">등록</button>
 </div>
 

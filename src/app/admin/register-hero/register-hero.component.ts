@@ -18,7 +18,8 @@ export class RegisterHeroComponent implements OnInit {
       sex: [null, Validators.required],
       country: [null, Validators.required],
       address: null,
-      power: this.fb.array(this.powers.map(item => false))
+      power: this.fb.array(this.powers.map(item => false)),
+      photo: null
     });
   }
 
@@ -56,4 +57,21 @@ export class RegisterHeroComponent implements OnInit {
       });
   }
 
+  fileUpload(event: any) {
+    console.log(event);
+    const reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = () => {
+      // 서버에 파일 전송
+      const formData = new FormData();
+      formData.append('file', event.target.files[0], event.target.files[0].name);
+      this.adminService.imageUpload(formData)
+        .subscribe(body => {
+          console.log(body);
+          // '=' 등호를 쓰지 않고 set 함수를 사용함. 비동기 방식으로 전송됨.
+          this.form.controls['photo'].setValue(body['value']);
+      });
+    }
+    return false;
+  }
 }
