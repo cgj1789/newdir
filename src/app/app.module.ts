@@ -16,6 +16,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MydatePipe } from './mydate.pipe';
 import { HighlightDirective } from './highlight.directive';
 import {ToasterModule} from 'angular2-toaster';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
   // 경로, 로딩할 컴포넌트
@@ -47,7 +48,8 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    ToasterModule.forRoot()
+    ToasterModule.forRoot(),
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

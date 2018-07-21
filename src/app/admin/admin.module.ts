@@ -22,7 +22,7 @@ const routes: Routes = [
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   declarations: [IndexComponent, DashboardComponent, RegisterHeroComponent, ManagerHeroComponent],
   providers: [AdminService],
