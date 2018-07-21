@@ -31,7 +31,7 @@
   <!--일반 템플릿을 ng 템플릿으로 감싼다.-->
   <ng-template ngFor let-todo [ngForOf]="todoList">
     <!--일반 템플릿 undefined, null 등의 값도 false로 인식. 그래서 vo에서 초기화를 안함. -->
-    <tr *ngIf="!todo.isEdited">
+    <tr *ngIf="!todo.isEdited" [@flyInOut] = "'in'">
       <td>{{todo.isFinished ? '완료' : '미완료'}}</td>
       <td>{{todo.todo}}</td>
       <td>{{todo.created}}</td>
