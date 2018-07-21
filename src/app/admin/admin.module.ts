@@ -5,10 +5,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterHeroComponent } from './register-hero/register-hero.component';
 import { ManagerHeroComponent } from './manager-hero/manager-hero.component';
 import {RouterModule, Routes} from '@angular/router';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: IndexComponent, children: [
-      {path: 'dashboard', component: DashboardComponent}, // 전체 경로 : /admin/dashboard
+      {path: '', component: DashboardComponent}, // 전체 경로 : /admin/dashboard
       {path: 'register', component: RegisterHeroComponent},
       {path: 'manager', component: ManagerHeroComponent}
     ]}
@@ -17,6 +18,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [IndexComponent, DashboardComponent, RegisterHeroComponent, ManagerHeroComponent]
